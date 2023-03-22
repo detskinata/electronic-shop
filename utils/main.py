@@ -10,6 +10,9 @@ class Items:
         self.price = price
         self.amount = amount
 
+    def __repr__(self):
+        return
+
     def calculate_total_price(self):
         return self.price * self.amount
 
@@ -31,14 +34,14 @@ class Items:
     @classmethod
     def instantiate_from_csv(cls) -> list | str:
         item = []
-        with open('utils/items.csv', encoding='windows-1251') as f:
+        with open('items.csv', encoding='windows-1251') as f:
             file_reader = csv.DictReader(f)
             for i in file_reader:
                 name_csv = i['name']
                 price_csv = int(i['price'])
                 quantity_csv = int(i['quantity'])
                 item.append(cls(name_csv, price_csv, quantity_csv))
-                return item
+            return item
 
 
     @staticmethod
