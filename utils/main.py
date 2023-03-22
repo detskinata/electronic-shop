@@ -10,9 +10,6 @@ class Items:
         self.price = price
         self.amount = amount
 
-    def __repr__(self):
-        return
-
     def calculate_total_price(self):
         return self.price * self.amount
 
@@ -43,15 +40,22 @@ class Items:
                 item.append(cls(name_csv, price_csv, quantity_csv))
             return item
 
-
     @staticmethod
     def is_integer(num) -> bool:
         return int(num) == num
 
+    def __repr__(self) -> str:
+        return f"{self.name}, {self.price}, {self.amount}"
 
-Items.instantiate_from_csv()  # создание объектов из данных файла
-print(len(Items.all))  # в файле 5 записей с данными по товарам
+    def __str__(self) -> str:
+        return f"{self.name}"
 
-print(Items.is_integer(5))
-print(Items.is_integer(5.0))
-print(Items.is_integer(5.5))
+# Items.instantiate_from_csv()  # создание объектов из данных файла
+# print(len(Items.all))  # в файле 5 записей с данными по товарам
+#
+# print(Items.is_integer(5))
+# print(Items.is_integer(5.0))
+# print(Items.is_integer(5.5))
+
+item1 = Items("Смартфон", 10000, 20)
+print(item1)
