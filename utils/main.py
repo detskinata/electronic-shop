@@ -37,7 +37,7 @@ class Items:
                 name_csv = i['name']
                 price_csv = int(i['price'])
                 quantity_csv = int(i['quantity'])
-                item.append(cls(name_csv, price_csv, quantity_csv))
+                item = cls.all.append(cls(name_csv, price_csv, quantity_csv))
             return item
 
     @staticmethod
@@ -50,8 +50,8 @@ class Items:
     def __str__(self) -> str:
         return f"{self.name}"
 
-# Items.instantiate_from_csv()  # создание объектов из данных файла
-# print(len(Items.all))  # в файле 5 записей с данными по товарам
+Items.instantiate_from_csv()  # создание объектов из данных файла
+print(len(Items.all))  # в файле 5 записей с данными по товарам
 #
 # print(Items.is_integer(5))
 # print(Items.is_integer(5.0))
