@@ -22,6 +22,10 @@ def test_name():
     name = "смартфон"
     assert name == "смартфон"
 
+
+def test_instantiate_from_csv():
+    assert len(Items.all) == 5
+
 def test_repr():
     assert item.__repr__() == 'phone, 8500.0, 2'
 
