@@ -31,7 +31,7 @@ class Items:
     @classmethod
     def instantiate_from_csv(cls) -> list | str:
         item = []
-        with open('items.csv', encoding='windows-1251') as f:
+        with open('utils/items.csv', encoding='windows-1251') as f:
             file_reader = csv.DictReader(f)
             for i in file_reader:
                 name_csv = i['name']
@@ -44,18 +44,43 @@ class Items:
     def is_integer(num) -> bool:
         return int(num) == num
 
-    def __repr__(self) -> str:
-        return f"{self.name}, {self.price}, {self.amount}"
+    # def __repr__(self) -> str:
+    #     return f"{self.name}, {self.price}, {self.amount}"
 
     def __str__(self) -> str:
         return f"{self.name}"
 
-Items.instantiate_from_csv()  # создание объектов из данных файла
-print(len(Items.all))  # в файле 5 записей с данными по товарам
-#
-# print(Items.is_integer(5))
-# print(Items.is_integer(5.0))
-# print(Items.is_integer(5.5))
+    def __add__(self, other) -> int:
+        if isinstance(other, Items):
+            return self.amount + other.amount
 
-item1 = Items("Смартфон", 10000, 20)
-print(item1)
+
+class Phone(Items):
+    def __init__(self, name, price, amount, number_of_sim):
+        super().__init__(name, price, amount)
+        self.number_of_sim = number_of_sim
+
+    @staticmethod
+    def __repr__(self):
+        return repr({self.name}, {self.price}, {self.amount}, {self.number_of_sim})
+
+    @property
+    def number_of_sim(self) -> int:
+        return self.__number_of_sim
+
+    @number_of_sim.setter
+    def number_of_sim(self, number_of_sim):
+            if number_of_sim > 0:
+                self.__number_of_sim = number_of_sim
+            else:
+                raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
+
+    # Items.instantiate_from_csv()  # создание объектов из данных файла
+    # print(len(Items.all))  # в файле 5 записей с данными по товарам
+    #
+    # print(Items.is_integer(5))
+    # print(Items.is_integer(5.0))
+    # print(Items.is_integer(5.5))
+phone1 = Phone('iPhone 14', 120_000, 5, 2)
+print(repr(phone1))
+    # phone1.number_of_sim = 0
