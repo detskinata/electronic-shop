@@ -31,7 +31,7 @@ class Items:
     @classmethod
     def instantiate_from_csv(cls) -> list | str:
         item = []
-        with open('utils/items.csv', encoding='windows-1251') as f:
+        with open('items.csv', encoding='windows-1251') as f:
             file_reader = csv.DictReader(f)
             for i in file_reader:
                 name_csv = i['name']
@@ -85,6 +85,6 @@ Items.instantiate_from_csv()  # создание объектов из данн�
     # print(Items.is_integer(5.5))
 
 
-# phone1 = Phone('iPhone 14', 120_000, 5, 2)
-# print(repr(phone1))
+phone1 = Phone('iPhone 14', 120_000, 5, 2)
+print(repr(phone1))
 # phone1.number_of_sim = 0

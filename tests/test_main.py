@@ -34,7 +34,7 @@ def test_name():
 
 
 def test_instantiate_from_csv():
-    assert len(Items.all) == 0
+    assert len(Items.all) == 5
 
 
 def test_repr():
@@ -57,3 +57,5 @@ def test_phone_number_of_sim():
     assert phone.number_of_sim == 3
 
 
+def test_repr(phone):
+    assert Phone.__repr__(phone) == 'iPhone 14, 120000, 5, 2'
