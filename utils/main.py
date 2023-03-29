@@ -60,9 +60,8 @@ class Phone(Items):
         super().__init__(name, price, amount)
         self.number_of_sim = number_of_sim
 
-    @staticmethod
-    def __repr__(self):
-        return repr({self.name}, {self.price}, {self.amount}, {self.number_of_sim})
+    # def __repr__(self):
+    #     return repr({self.name}, {self.price}, {self.amount}, {self.number_of_sim})
 
     @property
     def number_of_sim(self) -> int:
@@ -70,17 +69,22 @@ class Phone(Items):
 
     @number_of_sim.setter
     def number_of_sim(self, number_of_sim):
-            if number_of_sim > 0:
-                self.__number_of_sim = number_of_sim
-            else:
-                raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
+        if number_of_sim > 0:
+            self.__number_of_sim = number_of_sim
+        else:
+            raise ValueError('Количество физических SIM-карт должно быть целым числом больше нуля.')
 
-    # Items.instantiate_from_csv()  # создание объектов из данных файла
+    def __repr__(self):
+        return f'{self.name}, {self.price}, {self.amount}, {self.number_of_sim}'
+
+Items.instantiate_from_csv()  # создание объектов из данных файла
     # print(len(Items.all))  # в файле 5 записей с данными по товарам
     #
     # print(Items.is_integer(5))
     # print(Items.is_integer(5.0))
     # print(Items.is_integer(5.5))
-phone1 = Phone('iPhone 14', 120_000, 5, 2)
-print(repr(phone1))
-    # phone1.number_of_sim = 0
+
+
+# phone1 = Phone('iPhone 14', 120_000, 5, 2)
+# print(repr(phone1))
+# phone1.number_of_sim = 0
