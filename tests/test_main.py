@@ -59,3 +59,10 @@ def test_phone_number_of_sim():
 
 def test_repr(phone):
     assert Phone.__repr__(phone) == 'iPhone 14, 120000, 5, 2'
+
+
+def test_phone_number_of_sim(phone):
+    phone.number_of_sim = 3
+    assert phone.number_of_sim == 3
+    with pytest.raises(ValueError):
+        phone.number_of_sim = 0
